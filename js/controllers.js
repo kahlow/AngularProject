@@ -45,7 +45,7 @@ movieApp.controller('MovieListCtrl', function ($scope, Restangular, $location) {
 });
 
 
-movieApp.controller('MovieDetailCtrl', function ($scope, $routeParams, Restangular) {
+movieApp.controller('MovieDetailCtrl', function ($scope, $routeParams, Restangular, $location) {
     // I have a feeling there's a better way to handle this too
     Restangular.all('movies').getList().then(function (movieList) {
 
@@ -55,4 +55,14 @@ movieApp.controller('MovieDetailCtrl', function ($scope, $routeParams, Restangul
             }
         });
     });
+
+    $scope.save = function(movie){
+        console.log(movie.title);
+    }
+
+    $scope.cancel = function(){
+        $location.url('/');
+    }
+
+
 });

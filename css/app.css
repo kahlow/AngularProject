@@ -21,19 +21,20 @@ body {
   background-color: #c63d0f;
   color: #fdf3e7;
   margin-bottom: 2em;
+  border-bottom: 0.5em solid white;
 }
 .head h1 {
   padding-top: 2em;
 }
 
 .footer {
-  background-color: white;
+  background-color: #3b3738;
+  color: white;
   height: 200px;
   margin-top: 4em;
 }
 
 .git, .git:hover {
-  color: #3b3738;
   font-size: 2em;
 }
 .git i, .git:hover i {
