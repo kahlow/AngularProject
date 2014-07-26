@@ -2,3 +2,16 @@
   border: 1px solid #d4d4d4;
   height: 300px;
 }
+
+.btn {
+  margin-top: 1em;
+}
+
+.ngHeaderText {
+  font-size: 1.25em;
+}
+
+.container {
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
