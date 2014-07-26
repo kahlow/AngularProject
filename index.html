@@ -20,18 +20,10 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body ng-controller="MovieListCtrl">   
-    <div class="container">
-      <div class="row">
-        <div class="col-xs-12">
-          <h1>Movie List</h1>
-          <p>These are the best movies ever made.</p>
-          <div class="gridStyle" ng-grid="movies"></div>
-          <button type="button" class="btn btn-primary" disabled="disabled" ng-click="edit()">Edit Selection</button>
-        </div>
-      </div>
-    </div>
+  <body>   
 
+    <div ng-view></div>
+    
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="bower_components/underscore/underscore.js"></script>

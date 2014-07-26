@@ -1,6 +1,22 @@
 var movieApp = angular.module('movieApp', ['ngRoute', 'ngGrid', 'restangular']);
 
-movieApp.controller('MovieListCtrl', function ($scope, Restangular) {
+movieApp.config(['$routeProvider',
+    function($routeProvider) {
+        $routeProvider.
+            when('/', {
+            templateUrl: 'partials/movie-list.html',
+            controller: 'MovieListCtrl'
+        }).
+        when('/edit/:movieId', {
+            templateUrl: 'partials/movie-detail.html',
+            controller: 'MovieDetailCtrl'
+        }).
+        otherwise({
+            redirectTo: '/'
+        });
+}]);
+
+movieApp.controller('MovieListCtrl', function ($scope, Restangular, $location) {
 
     // GET request for movie list
     $scope.movieList = Restangular.all('movies').getList().$object;
@@ -11,7 +27,7 @@ movieApp.controller('MovieListCtrl', function ($scope, Restangular) {
     // initialize the grid
     $scope.movies = { 
         data: 'movieList', 
-        columnDefs: [{field:'name', displayName:'Name'}, 
+        columnDefs: [{field:'title', displayName:'Title'}, 
                     {field:'description', displayName:'Description'},
                     {field:'director', displayName:'Director'},
                     {field:'releaseYear', displayName:'Year Released'}],
@@ -22,8 +38,21 @@ movieApp.controller('MovieListCtrl', function ($scope, Restangular) {
         }
     };
 
-    // edit button click event
-    $scope.edit = function(){
-        console.log($scope.selectedMovie[0]);    
+    // I have a feeling there's a better way to handle this
+    $scope.edit = function() {
+        $location.url('/edit/' + $scope.selectedMovie[0].id);
     };
+});
+
+
+movieApp.controller('MovieDetailCtrl', function ($scope, $routeParams, Restangular) {
+    // I have a feeling there's a better way to handle this too
+    Restangular.all('movies').getList().then(function (movieList) {
+
+        movieList.forEach(function (elem){
+            if($routeParams.movieId == elem.id){
+                $scope.movie = elem;
+            }
+        });
+    });
 });

@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-md-6 col-md-offset-3">
+            <h1><em>{{movie.title}}</em></h1>
+
+            <form role="form">
+                <div class="form-group">
+                    <label for="title">Title</label>
+                    <input type="text" class="form-control" id="title" value="{{movie.title}}">
+                </div>
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea type="text" class="form-control" id="description" rows="3">{{movie.description}}</textarea>
+                </div>
+                <div class="form-group">
+                    <label for="director">Director</label>
+                    <input type="text" class="form-control" id="director" value="{{movie.director}}">
+                </div>
+                <div class="form-group">
+                    <label for="year">Year Released</label>
+                    <input type="text" class="form-control" id="year" value="{{movie.releaseYear}}">
+                </div>
+                <button type="submit" class="btn btn-primary">Save</button><a href="/" class="cancel">Cancel</a>
+            </form>
+        </div>
+    </div>
+</div>
