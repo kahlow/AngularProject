@@ -1,10 +1,11 @@
-var http = require('http');
+var express = require('express');
+var app = express();
 
-http.createServer(function (req, res) {
-    res.writeHead(200, {'Content-Type': 'application/json'});
+app.use(express.static(__dirname + '/'));
 
+app.get('/movies', function(req, res){
     var movies = [{
-            name: 'Terminator 2',
+             name: 'Terminator 2',
             description: 'He\'s back.'
         },
         {
@@ -15,8 +16,9 @@ http.createServer(function (req, res) {
             name: 'Evil Dead',
             description: 'Boomstick'
         }];
+    res.json(movies);
+});
 
-    res.end(JSON.stringify(movies));
-}).listen(1337, '127.0.0.1');
-
-console.log('Server running at http://127.0.0.1:1337/');
+var server = app.listen(3000, function() {
+    console.log('Listening on port %d', server.address().port);
+});
