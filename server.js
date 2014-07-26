@@ -5,16 +5,22 @@ app.use(express.static(__dirname + '/'));
 
 app.get('/movies', function(req, res){
     var movies = [{
-             name: 'Terminator 2',
-            description: 'He\'s back.'
+            name: 'Terminator 2: Judgment Day',
+            description: 'A cyborg, identical to the one who failed to kill Sarah Connor, must now protect her teenage son, John, from a more advanced cyborg, made out of liquid metal.',
+            director: 'James Cameron',
+            releaseYear: '1991'
         },
         {
             name: 'Big Trouble in Little China',
-            description: 'Don\'t mess with Jack Burton'
+            description: 'An All-American trucker gets dragged into a centuries-old mystical battle in Chinatown.',
+            director: 'John Carpenter',
+            releaseYear: '1986'
         },
         {
-            name: 'Evil Dead',
-            description: 'Boomstick'
+            name: 'The Evil Dead',
+            description: 'Five friends travel to a cabin in the woods, where they unknowingly release flesh-possessing demons.',
+            director: 'Sam Raimi',
+            releaseYear: '1981'
         }];
     res.json(movies);
 });

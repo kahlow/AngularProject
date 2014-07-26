@@ -6,6 +6,10 @@ movieApp.controller('MovieListCtrl', function ($scope, Restangular) {
 
     $scope.movies = { 
         data: 'movieList', 
-        columnDefs: [{field:'name', displayName:'Name'}, {field:'description', displayName:'Description'}]
+        columnDefs: [{field:'name', displayName:'Name'}, 
+                    {field:'description', displayName:'Description'},
+                    {field:'director', displayName:'Director'},
+                    {field:'releaseYear', displayName:'Year Released'}],
+        multiSelect: false
     };
 });
