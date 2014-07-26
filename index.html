@@ -9,6 +9,9 @@
     <!-- Bootstrap -->
     <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 
+    <link rel="stylesheet" href="bower_components/fontawesome/css/font-awesome.min.css">
+
+
     <link href="bower_components/ng-grid/ng-grid.min.css" rel="stylesheet" type="text/css">
 
     <link href="css/app.css" rel="stylesheet" type="text/css">
@@ -21,16 +24,29 @@
     <![endif]-->
   </head>
   <body>   
-    <div class="container">
-      <div class="row">
-        <div class="col-xs-12">
-          <h1>A sweet AngularJS project</h1>
+    <div class="head">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12">
+            <h1>AngularJS Demo</h1>
+          </div>
         </div>
       </div>
     </div>
 
-
     <div ng-view></div>
+
+
+    <div class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12 text-right">
+            site by Tommy Kahlow 
+            <a class="git" href="https://github.com/kahlow/AngularProject"><i class="fa fa-github"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
