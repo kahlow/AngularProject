@@ -1,8 +1,17 @@
 AngularProject
 ==============
 
-## Steps to run web application
+### Steps to run web application
 
-1 `npm install`
-2 `bower install`
-3 `node server.js`
+Clone the project to a local directory and run the following commands:
+
+```
+# Install npm modules
+npm install
+
+# Install bower packages
+bower install
+
+# Start up server
+node server.js
+```
