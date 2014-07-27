@@ -16,10 +16,10 @@ movieApp.config(['$routeProvider',
         });
 }]);
 
-movieApp.controller('MovieListCtrl', function ($scope, Restangular, $location, movieList) {
+movieApp.controller('MovieListCtrl', function ($scope, Restangular, $location, movieListService) {
 
     // GET request for movie list
-    $scope.movieList = movieList.getMovieList.$object;
+    $scope.movieList = movieListService.getMovieList.$object;
 
     // setting up the ability to get selected items from grid
     $scope.selectedMovie = [];
@@ -44,11 +44,9 @@ movieApp.controller('MovieListCtrl', function ($scope, Restangular, $location, m
     };
 });
 
-
-movieApp.controller('MovieDetailCtrl', function ($scope, $routeParams, Restangular, $location) {
+movieApp.controller('MovieDetailCtrl', function ($scope, $routeParams, Restangular, $location, movieListService) {
     // I have a feeling there's a better way to handle this too
-    Restangular.all('movies').getList().then(function (movieList) {
-
+    movieListService.getMovieList.then(function (movieList) {
         movieList.forEach(function (elem){
             if($routeParams.movieId == elem.id){
                 $scope.movie = elem;
@@ -63,6 +61,4 @@ movieApp.controller('MovieDetailCtrl', function ($scope, $routeParams, Restangul
     $scope.cancel = function(){
         $location.url('/');
     };
-
-
 });
