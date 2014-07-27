@@ -1,4 +1,4 @@
-var movieApp = angular.module('movieApp', ['ngRoute', 'ngGrid', 'restangular', 'movieServices']);
+var movieApp = angular.module('movieApp', ['ngRoute', 'ngGrid', 'movieServices']);
 
 movieApp.config(['$routeProvider',
     function($routeProvider) {
@@ -16,7 +16,7 @@ movieApp.config(['$routeProvider',
         });
 }]);
 
-movieApp.controller('MovieListCtrl', function ($scope, Restangular, $location, movieListService) {
+movieApp.controller('MovieListCtrl', function ($scope, $location, movieListService) {
 
     // GET request for movie list
     $scope.movieList = movieListService.getMovieList.$object;
@@ -44,7 +44,7 @@ movieApp.controller('MovieListCtrl', function ($scope, Restangular, $location, m
     };
 });
 
-movieApp.controller('MovieDetailCtrl', function ($scope, $routeParams, Restangular, $location, movieListService) {
+movieApp.controller('MovieDetailCtrl', function ($scope, $routeParams, $location, movieListService) {
     // I have a feeling there's a better way to handle this too
     movieListService.getMovieList.then(function (movieList) {
         movieList.forEach(function (elem){
