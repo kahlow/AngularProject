@@ -64,8 +64,8 @@ movieApp.controller('MovieDetailCtrl', function($scope, $routeParams, $location,
                 return m.id == movie.id;
             });
 
-            updatedMovie.put();
-            //updatedMovie.patch(updatedMovie);
+            //updatedMovie.put();
+            updatedMovie.patch(updatedMovie);
         });
 
         $location.url('/');

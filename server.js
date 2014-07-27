@@ -49,6 +49,17 @@ app.put('/movies/:movieId', function(req, res){
 app.patch('/movies/:movieId', function(req, res){
     var id = req.params.movieId;
 
+    var index = -1;
+
+    for(var i = 0; i < movies.length; i++) {
+        if (movies[i].id === req.body.id) {
+            index = i;
+            break;
+        }
+    }
+
+    movies[index] = req.body;
+
     res.send(id);
 });
 
