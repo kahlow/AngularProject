@@ -16,7 +16,7 @@ movieApp.config(['$routeProvider',
         });
 }]);
 
-movieApp.controller('MovieListCtrl', function ($scope, $location, movieListService) {
+movieApp.controller('MovieListCtrl', function($scope, $location, movieListService) {
 
     // setting up the ability to get selected items from grid
     $scope.selectedMovie = [];
@@ -24,8 +24,8 @@ movieApp.controller('MovieListCtrl', function ($scope, $location, movieListServi
     $scope.myData = [];
 
     // GET request for movie list
-    movieListService.getMovieList.then(function (movieList) {
-        _.each(movieList, function (elem){
+    movieListService.getMovieList.then(function(movieList) {
+        _.each(movieList, function(elem) {
             $scope.myData.push(elem);
         });
     });
@@ -50,19 +50,28 @@ movieApp.controller('MovieListCtrl', function ($scope, $location, movieListServi
     };
 });
 
-movieApp.controller('MovieDetailCtrl', function ($scope, $routeParams, $location, movieListService) {
+movieApp.controller('MovieDetailCtrl', function($scope, $routeParams, $location, movieListService) {
 
-    movieListService.getMovieList.then(function (movieList) {
-        $scope.movie = _.find(movieList, function (m) { 
+    movieListService.getMovieList.then(function(movieList) {
+        $scope.movie = _.find(movieList, function(m) { 
             return m.id == $routeParams.movieId;
         });
     });
 
-    $scope.save = function(movie){
-        console.log(movie);
+    $scope.save = function(movie) {
+        movieListService.getMovieList.then(function(movieList) {
+            var updatedMovie = _.find(movieList, function(m) {
+                return m.id == movie.id;
+            });
+
+            updatedMovie.put();
+            //updatedMovie.patch(updatedMovie);
+        });
+
+        $location.url('/');
     };
 
-    $scope.cancel = function(){
+    $scope.cancel = function() {
         $location.url('/');
     };
 });

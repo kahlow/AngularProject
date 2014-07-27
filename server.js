@@ -1,10 +1,9 @@
 var express = require('express');
 var app = express();
 
-app.use(express.static(__dirname + '/'));
+app.use(express.static(__dirname + '/')).use(express.json());
 
-app.get('/movies', function(req, res){
-    var movies = [{
+var movies = [{
             id: 1,
             title: 'Terminator 2: Judgment Day',
             description: 'A cyborg, identical to the one who failed to kill Sarah Connor, must now protect her teenage son, John, from a more advanced cyborg, made out of liquid metal.',
@@ -25,7 +24,32 @@ app.get('/movies', function(req, res){
             director: 'Sam Raimi',
             releaseYear: '1981'
         }];
+
+app.get('/movies', function(req, res){
     res.json(movies);
+});
+
+app.put('/movies/:movieId', function(req, res){
+    var id = req.params.movieId;
+
+    var index = -1;
+
+    for(var i = 0; i < movies.length; i++) {
+        if (movies[i].id === req.body.id) {
+            index = i;
+            break;
+        }
+    }
+
+    movies[index] = req.body;
+
+    res.send(id);
+});
+
+app.patch('/movies/:movieId', function(req, res){
+    var id = req.params.movieId;
+
+    res.send(id);
 });
 
 var server = app.listen(3000, function() {
