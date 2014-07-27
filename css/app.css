@@ -1,5 +1,4 @@
 body {
-  background-color: #fdf3e7;
   color: #3b3738;
 }
 
@@ -17,19 +16,15 @@ body {
 }
 
 .head {
-  height: 200px;
-  background-color: #c63d0f;
-  color: #fdf3e7;
   margin-bottom: 2em;
-  border-bottom: 0.5em solid white;
+  border-bottom: 0.5em solid #3b3738;
 }
 .head h1 {
-  padding-top: 2em;
+  padding-top: 1em;
+  padding-bottom: 1em;
 }
 
 .footer {
-  background-color: #3b3738;
-  color: white;
   height: 200px;
   margin-top: 4em;
 }
@@ -39,4 +34,8 @@ body {
 }
 .git i, .git:hover i {
   padding-top: 2em;
+}
+
+.ng-invalid {
+  border-color: red !important;
 }

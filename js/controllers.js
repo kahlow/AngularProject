@@ -1,4 +1,4 @@
-var movieApp = angular.module('movieApp', ['ngRoute', 'ngGrid', 'restangular']);
+var movieApp = angular.module('movieApp', ['ngRoute', 'ngGrid', 'restangular', 'movieServices']);
 
 movieApp.config(['$routeProvider',
     function($routeProvider) {
@@ -16,10 +16,10 @@ movieApp.config(['$routeProvider',
         });
 }]);
 
-movieApp.controller('MovieListCtrl', function ($scope, Restangular, $location) {
+movieApp.controller('MovieListCtrl', function ($scope, Restangular, $location, movieList) {
 
     // GET request for movie list
-    $scope.movieList = Restangular.all('movies').getList().$object;
+    $scope.movieList = movieList.getMovieList.$object;
 
     // setting up the ability to get selected items from grid
     $scope.selectedMovie = [];
@@ -57,12 +57,12 @@ movieApp.controller('MovieDetailCtrl', function ($scope, $routeParams, Restangul
     });
 
     $scope.save = function(movie){
-        console.log(movie.title);
-    }
+        console.log(movie);
+    };
 
     $scope.cancel = function(){
         $location.url('/');
-    }
+    };
 
 
 });
