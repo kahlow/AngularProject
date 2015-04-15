@@ -15,3 +15,7 @@ bower install
 # Start up server
 node server.js
 ```
+
+#### Notes from author
+
+The tooling and angular add-ons were given to me as requirements.
